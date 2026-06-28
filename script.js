@@ -279,15 +279,14 @@ function renderProfile(){
   const block=(h,arr,render,emptyTxt)=>'<div class="pblock"><div class="h">'+h+'</div>'
     +(arr.length?arr.map(render).join(''):'<div class="pempty">'+emptyTxt+'</div>')+'</div>';
   return view('perfil',
-    '<div class="profile">'
-    +'<div class="phead"><div class="avatar">J</div><div><div class="nm">João Fetin</div><div class="rl">Eng. de Software · GES 2026</div></div></div>'
-    +'<div class="scroll" style="background:var(--bg)">'
+    '<div class="phead"><div class="avatar">J</div><div><div class="nm">João Fetin</div><div class="rl">Eng. de Software · GES 2026</div></div></div>'
+    +'<div class="scroll"><div class="profile">'
     +block(I.ext+'Inscrições acessadas', hist, h=>prow(I.arch,h.mod,'Formulário acessado em '+h.quando), 'Você ainda não acessou nenhum formulário de seletivo.')
     +block(I.clock+'Meus lembretes', rem, r=>prow(I.bell,r.titulo||r.mod, r.data?'Lembrete 1h antes · '+fmt(r.data):'Aviso na abertura'), 'Nenhum lembrete ativo.')
     +block(I.cal+'Na minha agenda', ag, e=>prow(I.cal,e.titulo,fmt(e.data)+' · '+e.hora+' · '+e.local), 'Nenhum evento adicionado à agenda.')
     +'<div class="pblock"><div class="h">Preferências</div>'
       +'<div class="prow" onclick="openNotif()" style="cursor:pointer">'+I.bell+'<div class="pr-t"><b>Notificações da Atlética</b><span>Gerenciar avisos de eventos e seletivos</span></div>'+I.arrow+'</div></div>'
-    +'<div style="height:90px"></div></div>'
+    +'</div></div>'
     +bnav('perfil'));
 }
 
